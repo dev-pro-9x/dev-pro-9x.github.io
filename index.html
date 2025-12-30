@@ -1,145 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hero Labs Mobile & Developer Support</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset & Base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
-    a { color: #007bff; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
+<!-- PREMIUM -->
+  <section id="premium">
+    <div class="wrap">
+      <div class="premium reveal">
+        <h2><span class="grad" style="-webkit-text-fill-color:transparent;">Clean Master Premium</span></h2>
+        <p>Unlock the best experience for power cleaning and faster scanning.</p>
+        <ul>
+          <li>Unlimited cleaning & advanced duplicate detection</li>
+          <li>Faster scans + smarter best-result selection</li>
+          <li>Priority improvements & premium features</li>
+        </ul>
+        <a class="cta" href="https://apps.apple.com/us/app/id6757098162" target="_blank" rel="noopener">
+          Try Premium Now <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    /* Layout */
-    header, footer { background: #212529; color: #fff; }
-    header { padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-    header .logo { display: flex; align-items: center; }
-    header .logo img { height: 40px; margin-right: 0.5rem; }
-    nav a { margin-left: 1rem; font-weight: 700; }
-    .container { max-width: 1000px; margin: auto; padding: 2rem 1rem; }
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about">
+        <div class="card reveal">
+          <div class="inner">
+            <h3>About HeroLabs</h3>
+            <p>
+              <strong>HeroLabs</strong> is a technology company specializing in <strong>mobile software development</strong>
+              for <strong>iOS</strong> and <strong>Android</strong>. We build high-quality, user-friendly apps that help
+              users clean, optimize, and simplify everyday digital tasks — with a strong focus on performance, privacy,
+              and user experience.
+            </p>
+          </div>
+        </div>
 
-    /* Hero */
-    .hero { background: #007bff; color: #fff; text-align: center; padding: 4rem 1rem; }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .hero p { font-size: 1.1rem; }
+        <div class="card reveal">
+          <div class="inner">
+            <h3>Support</h3>
+            <p>
+              Need help or have questions?<br />
+              Contact us at:
+              <a href="mailto:tvtechhelper@gmail.com" style="font-weight:900; text-decoration: underline; text-underline-offset: 4px;">
+                tvtechhelper@gmail.com
+              </a>
+            </p>
+            <div style="margin-top:14px;">
+              <a class="ghost" href="mailto:tvtechhelper@gmail.com">Email Support →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    /* Sections */
-    section { margin-top: 3rem; }
-    .services, .support { display: flex; flex-wrap: wrap; gap: 2rem; }
-    .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex: 1; min-width: 250px; padding: 2rem; }
-    .card h3 { margin-bottom: 1rem; }
-    .card p { color: #555; }
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="wrap">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center;">
+        <div>
+          <div style="font-weight:900;">© 2025 HeroLabs</div>
+          <div class="small">Mobile Software Development Company • iOS & Android Applications</div>
+        </div>
+        <div class="small">
+          Support:
+          <a href="mailto:tvtechhelper@gmail.com" style="font-weight:900; text-decoration: underline; text-underline-offset: 4px;">
+            tvtechhelper@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    /* Contact Form */
-    .contact form { display: grid; gap: 1rem; margin-top: 1rem; }
-    .contact input, .contact textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; }
-    .contact button { background: #28a745; color: #fff; border: none; padding: 0.8rem; font-size: 1rem; border-radius: 4px; cursor: pointer; }
-    .contact button:hover { background: #218838; }
+  <script>
+    // ===== Scroll reveal =====
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) e.target.classList.add('show');
+      }
+    }, { threshold: 0.12 });
 
-    /* Footer */
-    footer { text-align: center; padding: 1.5rem 1rem; font-size: 0.9rem; }
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      header { flex-direction: column; text-align: center; }
-      nav { margin-top: 0.5rem; }
+    // ===== Carousel (auto + dots) =====
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const dotsWrap = document.getElementById('dots');
+    let idx = 0;
+    let timer = null;
+
+    function renderDots() {
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === idx ? ' active' : '');
+        d.addEventListener('click', () => {
+          idx = i;
+          updateCarousel(true);
+        });
+        dotsWrap.appendChild(d);
+      });
     }
-  </style>
-</head>
-<body>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/theateam2023/files/refs/heads/develop/IMG_4827.PNG" alt="Hero Labs Mobile Logo">
-      <span><strong>HeroLabs Mobile</strong></span>
-    </div>
-    <nav>
-      <a href="#about">About Us</a>
-      <a href="#services">Services</a>
-      <a href="#support">Developer Support</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    function updateCarousel(resetTimer=false) {
+      track.style.transform = translateX(${-idx * 100}%);
+      Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === idx));
+      if (resetTimer) restartTimer();
+    }
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Pioneering Top-Tier Mobile Solutions</h1>
-      <p>HeroLabs Mobile is your expert partner in crafting high-quality mobile apps. Our portfolio includes several top-ranked apps on the App Store.</p>
-    </div>
-  </section>
+    function restartTimer() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        idx = (idx + 1) % slides.length;
+        updateCarousel(false);
+      }, 3600);
+    }
 
-  <!-- About Us -->
-  <section id="about" class="container">
-    <h2>About Us</h2>
-    <p>HeroLabs Mobile is a leading technology company specializing in mobile application development. With over 10 years of experience and a dedicated team of experts, we deliver best-in-class solutions that delight users and drive business growth. Several of our apps have reached the top charts on the Apple App Store.</p>
-  </section>
+    renderDots();
+    updateCarousel(false);
+    restartTimer();
 
-  <!-- Services -->
-  <section id="services" class="container">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>iOS App Development</h3>
-        <p>Custom native iOS applications built with Swift and SwiftUI, optimized for performance and user engagement.</p>
-      </div>
-      <div class="card">
-        <h3>Android App Development</h3>
-        <p>Premium native Android apps using Kotlin and Jetpack, delivering seamless experiences across devices.</p>
-      </div>
-      <div class="card">
-        <h3>UX/UI Design</h3>
-        <p>Intuitive and beautiful interface designs, backed by user research and industry best practices.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Developer Support -->
-  <section id="support" class="container">
-    <h2>Developer Support</h2>
-    <p>Whatever issues you’re facing, our dedicated support team is here to resolve them. Contact us for prompt assistance:</p>
-    <div class="support">
-      <div class="card">
-        <h3>Issue Resolution</h3>
-        <p>We diagnose and fix any technical problems or bugs in your mobile applications.</p>
-      </div>
-      <div class="card">
-        <h3>Performance Optimization</h3>
-        <p>Help improving app speed, stability, and overall user experience.</p>
-      </div>
-      <div class="card">
-        <h3>Feature Support</h3>
-        <p>Guidance on implementing and troubleshooting new features effectively.</p>
-      </div>
-      <div class="card">
-        <h3>Custom Solutions</h3>
-        <p>Tailored assistance for integrations, APIs, and platform-specific challenges.</p>
-      </div>
-    </div>
-  </section>
+// Pause on hover (desktop)
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter', () => timer && clearInterval(timer));
+    carousel.addEventListener('mouseleave', () => restartTimer());
 
-  <!-- Contact -->
-  <section id="contact" class="container contact">
-    <h2>Contact Us</h2>
-    <p>If you’re facing any issues or need assistance, please reach out to us for prompt support:</p>
-    <form action="mailto:tvtechhelper@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Describe the issue you're encountering" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p style="margin-top:1rem; color:#555;">
-      Or email us directly at <a href="mailto:tvtechhelper@gmail.com">tvtechhelper@gmail.com</a>
-    </p>
-  </section>
+    // ===== Tilt effect for hero phones =====
+    const stage = document.getElementById('tiltStage');
+    const phoneMain = document.getElementById('phoneMain');
+    const phoneBack = document.getElementById('phoneBack');
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 HeroLabs Mobile. All rights reserved.
-  </footer>
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
+    stage.addEventListener('mousemove', (e) => {
+      const r = stage.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;   // 0..1
+      const y = (e.clientY - r.top) / r.height;   // 0..1
+      const rx = clamp((0.5 - y) * 10, -10, 10);
+      const ry = clamp((x - 0.5) * 12, -12, 12);
+
+      phoneMain.style.transform = translate3d(14px, 6px, 30px) rotate(-6deg) rotateX(${rx}deg) rotateY(${ry}deg);
+      phoneBack.style.transform = translate3d(-120px, 40px, 0) rotate(10deg) rotateX(${rx * 0.6}deg) rotateY(${ry * 0.6}deg);
+    });
+
+    stage.addEventListener('mouseleave', () => {
+      phoneMain.style.transform = '';
+      phoneBack.style.transform = '';
+    });
+  </script>
 </body>
 </html>
